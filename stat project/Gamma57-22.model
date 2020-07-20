@@ -1,0 +1,14 @@
+model{
+
+    # the posterior
+for(i in 1:N)
+{    x[i] ~ dgamma(lambdaPo, rPo)     }
+    
+
+# non-informational, flat distribution of parameters 
+    lambdaPo ~ dunif(1,100)
+    rPo ~ dunif(1,100)
+
+}
+
+

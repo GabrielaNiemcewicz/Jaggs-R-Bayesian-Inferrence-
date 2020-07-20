@@ -1,0 +1,19 @@
+#  1b
+model{ 
+
+  for (i in 1:N){ 
+      Y[i] ~ dbern(d[i]) # observations are binomially distributed around some expected value
+	logit(d[i]) = alpha0 + beta0*(d[j]) # the expected value is formed from reverselogit(a+b*(t)), constraint possible
+    }
+
+  }
+
+
+  alpha0 ~ dunif(-10,10) # uniform prior 
+  beta0 ~ dunif(-10,10) # uniform prior 
+
+
+
+}
+
+

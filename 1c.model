@@ -1,0 +1,24 @@
+#  1b
+# theta= putting$prop, tries = putting$Ntrys, d= putting$dist
+model{ 
+
+  for (i in 1:20){  //19? from 19 first nrow(..)=20
+      Y[i] ~ dbin(thetaHAT[i], tries[i]) # observations are binomially distributed around some expected value
+#probability theta for this distance saved in theta, number of times ball played in tries each time
+	logit(thetaHAT[i]) <- alpha0 + beta0*(d[i]) # the expected value is formed from reverselogit(a+b*(t)), constraint possible
+    }
+
+  
+
+#priors
+  alpha0 ~ dunif(-10,10) # uniform prior 
+  beta0 ~ dunif(-10,10) # uniform prior 
+
+//get last missing one like a missing parameter to estimate
+ for (i in 1:20){ 
+      Y[i] ~ dbin(thetaHAT[i], tries[i])
+
+//ystar ~ dbin(exp(alpha0+beta0*(d[25]-mean(d[]))))
+
+}
+
